@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Advanced 3D Website with A-Frame</title>
+    <meta name="description" content="Advanced 3D Website" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+      .navbar a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a-scene>
+      <!-- Camera and cursor -->
+      <a-entity camera look-controls wasd-controls>
+        <a-cursor color="red"></a-cursor>
+      </a-entity>
+      <!-- Ground -->
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="20"
+        height="20"
+        color="#7BC8A4"
+      ></a-plane>
+      <!-- Rotating Box -->
+      <a-box
+        position="0 1.5 -5"
+        rotation="0 45 0"
+        color="#4CC3D9"
+        animation="property: rotation; to: 0 405 0; loop: true; dur: 5000"
+      ></a-box>
+      <!-- Bouncing Sphere -->
+      <a-sphere
+        position="2 1.25 -5"
+        radius="1.25"
+        color="#EF2D5E"
+        animation="property: position; to: 2 2.5 -5; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true"
+      ></a-sphere>
+      <!-- Spinning Cylinder -->
+      <a-cylinder
+        position="-2 1 -5"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 3000"
+      ></a-cylinder>
+      <!-- Imported 3D Model -->
+      <a-entity
+        gltf-model="url(https://cdn.aframe.io/test-models/models/Tree/Tree.gltf)"
+        scale="2 2 2"
+        position="0 0 -8"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
+      ></a-entity>
+      <!-- Sky -->
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
